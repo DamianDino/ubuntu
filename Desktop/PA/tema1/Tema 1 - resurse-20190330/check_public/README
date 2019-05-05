@@ -1,0 +1,130 @@
+================================================================================
+===========================PROIECTAREA ALGORITMILOR=============================
+===================================TEMA 1=======================================
+=================================BUTARU OANA====================================
+====================================321CD=======================================
+================================================================================
+
+In implementarea celor 3 task-uri ale temei, am folosit scheletul de laborator
+pus la dispozitie de echipa de PA, rezolvarea efectiva a problemelor 
+regasindu-se in metodele getResult().
+
+__________
+
+PROBLEMA 1
+__________
+
+-> Algoritm:
+Ideea de baza a primei probleme este una simpla: intrucat Tuzgu si Ritza joaca
+optim, ei doresc sa maximizeze propriul scor, iar acest lucru se intampla daca,
+atunci cand este randul lor, aleg cel mai mare numar existent. Astfel, am sortat
+descrescator vectorul de numere, iar fiecare va alege primul numar din vector.
+Parcurgand vectorul, in functie de paritatea indicelui (Tuzgu - incepe de la
+i=0 => ia numerele cu indice par => Ritza ia numerele cu indice impar), am 
+adunat numarul corespunzator la scorul fiecaruia.
+
+-> Complexitate temporala: 
+1. Citirea de la input: O(N)
+2. Sortarea vectorului: O(NlogN)
+3. Parcurgerea vectorului pt calcularea scorurilor: O(N)
+=> Complexitatea temporala: O(NlogN), N - marimea vectorului
+
+-> Complexitate spatiala:
+1. Crearea unui vector in care sa retinem numerele cu care se joaca: O(N)
+2. Algoritmul de sortare are o complexitate spatiala worst case O(N)
+=> Complexitatea spatiala: O(N), N - marimea vectorului
+
+__________
+
+PROBLEMA 2
+__________
+
+-> Algoritm:
+In rezolvarea acestei probleme, am folosit programare dinamica.
+
+1. Fie valoarea de la dp[i][j], diferenta maxima de scor obtinuta alegand cele 
+mai mari i numere din vector, din care eliminam j.
+
+2. Daca tot vrem sa alegem cele mai mari i numere, primul pas este sa sortam descrescator vectorul. Formand matricea de dimensiune (N +1) x (k + 1), incepem sa o completam.
+
+3. Analizam diagonala principala: pe aceasta, elementele sunt de forma dp[i][i].
+Ce inseamna sa aleg i elemente din care sa elimin i? Le voi elimina pe toate, 
+asadar ambii jucatori vor avea scorul nul, deci diferenta de scor va fi nula.
+Analizam supradiagonala: elementele sunt de forma dp[i][k], k>i. Inseamna ca
+vrem sa eliminam mai multe elemente decat avem, deci toate celulele
+supradiagonale vor fi tot 0.
+
+4. Cazul de baza: Daca nu eliminam niciun element (coloana k=0), inseamna ca
+problema se reduce la problema rezolvata anterior. Fiecare jucator va selecta,
+cand ii vine randul, cel mai mare numar dintre cele disponibile, iar prima
+coloana se va completa cu aceste numere.
+
+5. Cazul general: Modul in care completam restul matricei depinde de paritatea
+diferentei i-j, deoarece paritatea acesteia spune daca Tuzgu ia ultimul sau daca
+Ritza ia ultima: daca diferenta i-j este para, Ritza ia ultimul numar, iar daca
+diferenta este impara, Tuzgu ia ultimul numar.
+Decizia pe care trebuie sa o luam la completarea lui dp[i][j] se bazeaza pe
+urmatoarea intrebare: obtin o diferenta de scor mai mare daca din i-1 numere
+elimin j-1 si al j-lea este luat de mine, sau daca din i-1 numere elimin j si pierd/iau si urmatorul numar? Pierderea sau luarea ultimului numar diferentiaza si in cod cele doua cazuri: valoarea acestuia se scade daca diferenta este para, pentru ca este luat de Ritza, respectiv se aduna, pentru ca este luat de Tuzgu.
+Deoarece vrem sa maximizam diferenta de scor, vom aplica max pe cele doua rezultate intoarse de situatii prezentate.
+
+6. Rezultatul care ne intereseaza se va afla pe pozitia dp[N][k], deoarece problema noastra este sa eliminam k din cele N numere date.
+
+-> Complexitate temporala: 
+1. Citirea de la input: O(N)
+2. Sortarea vectorului: O(NlogN)
+3. Parcurgerea vectorului pt calcularea diferentelor din problema de baza: O(N)
+4. Popularea primei coloane pentru cazul de baza: O(N)
+5. Popularea matricei pentru cazul general: O(N * min(i, k+1)) => O(N^2) worst case
+=> Complexitatea temporala: O(N^2), worst case, N - marimea vectorului
+
+-> Complexitate spatiala:
+1. Crearea unui vector in care sa retinem numerele cu care se joaca: O(N)
+2. Algoritmul de sortare are o complexitate spatiala worst case O(N)
+3. Crearea unui vector de diferente: O(N)
+4. Crearea matricei dp: O(N*k)
+=> Complexitatea spatiala: O(N*k), N - marimea vectorului, k - numarul de elemente eliminate
+
+__________
+
+PROBLEMA 3
+__________
+
+-> Algoritm:
+In rezolvarea acestei probleme, am folosit programare dinamica.
+
+1. Fie dp[i][j] diferenta maxima de scor pe care o poti obtine daca incepi 
+primul (cazul lui Tuzgu), daca avem j-i+1 numere.
+
+2. Cazul de baza: 
+a) Sa analizam diagonala principala: elementele acesteia sunt de forma dp[i][i]. O vom completa cu rezultatul obtinut in cazul in care vectorul
+contine un singur numar: Tuzgu il va alege pe acesta, iar Ritza va ramane cu 0,
+asadar diagonala principala va fi completata cu elementele din vector, in ordinea in care acestea apar.
+b) Daca avem 2 numere, diferenta maxima de scor va fi trecuta pe supradiagonala.
+Daca avem doar 2 numere, il vom alege pe cel mai mare, deci celulele de forma
+dp[i][i+1] vor avea valoarea maxima dintre arr[i] si arr[i+1].
+
+3. Cazul general:
+Vom incepe sa completam matricea ramasa de la i=2, pentru ca deja avem rezultatele pentru primele 2 elemente din cazul de baza si de la j=0, prima linie. Constrangerile ar fi i < N si j < N - i. Va trebui sa alegem maximul dintre rezultatul obtinut daca alegem primul numar din vector sau ultimul numar din vector.
+Fie X rezultatul pe care il obtinem daca Tuzgu alege primul numar din vector => X = arr[j]; In functie de cate numere avem in vector, la X se va adauga numarul minim obtinut prin trecerea la cazul de baza. Spre exemplu, daca avem un vector cu patru numere, la calculul lui dp[0][3], X = arr[0] + Math.min(dp[1][2], dp[2][3]), unde dp[1][2] si dp[2][3] au fost deja rezolvate in cazul de baza si simbolizeaza diferenta cea mai mare de scor care poate fi atinsa in cazurile respective. 
+Fie Y rezultatul pe care il obtinem daca Tuzgu alege ultimul numar din vector =>
+Y = arr[j+i]. Se aplica exact acelasi procedeu precum la calculul lui X, iar la final, daca avem un vector de 4 numere, Y = arr[j+i] + Math.min(dp[0][1], dp[1][2]), unde dp[0][1] si dp[1][2] au fost deja rezolvate in cazul de baza si simbolizeaza diferenta cea mai mare de scor care poate fi atinsa in cazurile respective.
+Aici observam si de ce am avut nevoie de 2 cazuri de baza. Nu ne putem extinde la urmatorul caz decat daca avem 2 dependinte inaintea acestuia.
+
+4. In matrice, calculam doar rezultatul maxim pe care il poate obtine Tuzgu, fiind mai usor asa si stiind totodata ca scorul Ritzei este suma tuturor numerelor din vector - scorul lui Tuzgu. Asadar, scorul lui Tuzgu se va afla pe pozitia dp[0][N-1], iar diferenta scorurilor va fi dp[0][N-1] - (sum_numbers_in_array - dp[0][N-1]);
+
+-> Complexitate temporala: 
+1. Citirea de la input: O(N)
+2. Popularea diagonalei principale: O(N)
+3. Popularea supradiagonalei: O(N-1)
+4. Completarea celulelor de forma dp[j][j+i]: O(N^2) worst case
+5. Calcularea sumei elementelor din vector: O(N)
+=> Complexitatea temporala: O(N^2), worst case, N - marimea vectorului
+
+-> Complexitate spatiala:
+1. Crearea unui vector in care sa retinem numerele cu care se joaca: O(N)
+2. Crearea matricei dp: O(N*N)
+=> Complexitatea spatiala: O(N*N), N - marimea vectorului
+
+-> Surse consultate pentru problema 3:
+https://www.youtube.com/watch?v=WxpIHvsu1RI

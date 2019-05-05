@@ -1,0 +1,1 @@
+(() #hash() #hash((0 . 0) (1 . 2)) #hash() ((LOAD_CONST . 1) (RETURN_VALUE . 0)) 0)2((2) #hash() #hash((0 . 0) (1 . 2)) #hash() ((LOAD_CONST . 1) (RETURN_VALUE . 0)) 1)

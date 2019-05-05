@@ -1,0 +1,77 @@
+******************************** PROIECT PA 2019 ****************************
+************************************HALITE III********************************
+
+Grupa: 321CD
+Echipa: O_de_2_la_N
+Membri:  > BASOC ADRIANA
+                > BUTARU OANA
+                > DINOIU DAMIAN
+                > SCARLAT ALEXANDRA
+
+1) INSTRUCTIUNI DE COMPILARE
+
+Arhiva incarcata contine fisierul Makefile, care contine urmatoarele reguli:
+- all: javac MyBot.java hlt/*.java, care compileaza toate fisierele .java 
+- run: java MyBot
+-clean: rm *.class hlt/*.class, care sterge toate fisierele bytecode generate in urma
+            compilarii
+
+2) DETALII DESPRE STRUCTURA PROIECTULUI
+
+a) folderul hlt - contine implementarile claselor necesare derularii jocului
+b) folderul replays - contine rezultatele rularii jocului pentru toate mapele
+c) MyBot.java - main entry-ul proiectului, care contine logica jocului
+
+3) DETALII DESPRE ABORDAREA ALGORITMICA
+
+a) NAVELE
+In primul rand, fiecare nava va avea un ID unic, care ne va ajuta sa ii setam si sa ii
+determinam traiectoria pe parcursul jocului. Toate ID-urile vor face parte dintr-un 
+ArrayList si nu se vor reseta la fiecare tura. Daca halite-ul acumulat in shipyard ne 
+permite, vom genera o noua nava in primele 200 de runde, dar nu vom depasi 8 nave
+in total.
+
+b) MISCAREA NAVELOR
+Odata generate, navele se vor imparti dupa cele 4 cadrane, considerate in sens trigono-
+metric, folosind un algoritm de tip Greedy, alegand mereu punctul care are halite mai
+mult. In functie de ID-ul acestora, functia getNextDirection, din clasa  GameMap.java
+decide urmatoarea mutare a navelor. 
+In cazul in care numarul de runde ramase devine mai mic decat distanta pe care nava 
+trebuie sa o parcurga pana la shipyard, aceasta va incepe sa se intoarca spre shipyard,
+insa intr-o tura va sta pe o casuta, pentru a mai colecta halite, iar urmatoarea tura se va
+deplasa. Acelasi lucru si in cazul in care nava se mai poate deplasa fara sa se intoarca
+spre shipyard. In momentul in care halite-ul acumulat a ajuns la aproximativ jumatate
+din capacitatea navei (475), nava se va intoarce spre shipyard, avand grija sa nu se 
+ciocneasca de alte nave de pe mapa.
+Metoda goHome, din clasa GameMap.java analizeaza, relativ la pozitia fiecarei nave,
+modul in care aceasta se intoarce la shipyard.
+> cadranul 1 trigonometric: SW
+> cadranul 2 trigonometric: WN
+> cadranul 3 trigonometric: NE
+> cadranul 4 trigonometric: ES
+
+c) COMPLEXITATEA ALGORITMULUI
+Complexitatea temporala a algoritmului folosit este O(N*M), unde N reprezinta numarul
+de runde si M numarul de nave, care este un numal fix, asadar complexitate se limiteaza
+la O(N). Complexitatea spatiala este constanta, deoarece singura structura de date 
+folosita este un ArrayList in care retinem navele generate de shipyard.
+
+4) SURSE DE INSPIRATIE
+
+Pentru inceput, am folosit start kit-ul pentru Java de pe site-ul oficial al competitiei, din
+care am pastrat implementarea claselor in folderul hlt. Conceperea algoritmului de 
+rezolvare a fost sprijinita de un studiu amanuntit asupra regulilor de desfasurare a jocului,
+oferite de pagina https://2018.halite.io/learn-programming-challenge/game-overview.
+De asemenea, a fost de mare ajutor modulul https://2018.halite.io/watch-games, care 
+ne-a ajutat sa vizualizam si sa analizam in detaliu efectele algoritmilor folositi.
+
+5) RESPONSABILITATEA FIECARUI MEMBRU AL ECHIPEI
+
+> Strategie: toti membrii echipei au venit cu idei care sugerau o strategie din ce in ce mai
+	  eficienta; am ales de comun acord strategia finala, urmand ca la urmatoarele
+	  etape sa existe posibilitatea de a schimba modul de joc.
+> Desfasurarea propriu-zisa a jocului: Basoc Adriana, Dinoiu Damian
+> Metode care vin in ajutorul punctului anterior: Scarlat Alexandra, Butaru Oana
+> Testarea algoritmului: toti membrii echipei
+> Documentatie si README: Scarlat Alexandra, Butaru Oana
+

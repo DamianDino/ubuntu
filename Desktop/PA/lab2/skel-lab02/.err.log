@@ -1,0 +1,113 @@
+
+Compiling cpp/task-1...
+main.cpp: In member function ‘double Task::get_result()’:
+main.cpp:45:38: error: no matching function for call to ‘Task::cmp()’
+   sort(objs.begin(), objs.end(), cmp());
+                                      ^
+main.cpp:35:7: note: candidate: bool Task::cmp(std::pair<int, double>&, std::pair<int, double>&)
+  bool cmp (pair<int, double>& o1, pair<int, double>& o2){
+       ^
+main.cpp:35:7: note:   candidate expects 2 arguments, 0 provided
+main.cpp:45:39: error: ‘sort’ was not declared in this scope
+   sort(objs.begin(), objs.end(), cmp());
+                                       ^
+main.cpp:50:28: error: expected primary-expression before ‘)’ token
+   for (auto object : Object){
+                            ^
+========================================
+Compiling cpp/task-1...
+main.cpp: In member function ‘double Task::get_result()’:
+main.cpp:45:38: error: no matching function for call to ‘Task::cmp()’
+   sort(objs.begin(), objs.end(), cmp());
+                                      ^
+main.cpp:35:7: note: candidate: bool Task::cmp(std::pair<int, double>&, std::pair<int, double>&)
+  bool cmp (pair<int, double>& o1, pair<int, double>& o2){
+       ^
+main.cpp:35:7: note:   candidate expects 2 arguments, 0 provided
+main.cpp:45:39: error: ‘sort’ was not declared in this scope
+   sort(objs.begin(), objs.end(), cmp());
+                                       ^
+main.cpp:50:28: error: expected primary-expression before ‘)’ token
+   for (auto object : Object){
+                            ^
+========================================
+Compiling cpp/task-1...
+main.cpp: In member function ‘double Task::get_result()’:
+main.cpp:45:38: error: no matching function for call to ‘Task::cmp()’
+   sort(objs.begin(), objs.end(), cmp());
+                                      ^
+main.cpp:35:7: note: candidate: bool Task::cmp(std::pair<int, double>&, std::pair<int, double>&)
+  bool cmp (pair<int, double>& o1, pair<int, double>& o2){
+       ^
+main.cpp:35:7: note:   candidate expects 2 arguments, 0 provided
+main.cpp:45:39: error: ‘sort’ was not declared in this scope
+   sort(objs.begin(), objs.end(), cmp());
+                                       ^
+main.cpp:50:28: error: expected primary-expression before ‘)’ token
+   for (auto object : Object){
+                            ^
+========================================
+Compiling cpp/task-1...
+main.cpp: In member function ‘double Task::get_result()’:
+main.cpp:45:38: error: no matching function for call to ‘Task::cmp()’
+   sort(objs.begin(), objs.end(), cmp());
+                                      ^
+main.cpp:35:7: note: candidate: bool Task::cmp(std::pair<int, double>&, std::pair<int, double>&)
+  bool cmp (pair<int, double>& o1, pair<int, double>& o2){
+       ^
+main.cpp:35:7: note:   candidate expects 2 arguments, 0 provided
+main.cpp:45:39: error: ‘sort’ was not declared in this scope
+   sort(objs.begin(), objs.end(), cmp());
+                                       ^
+main.cpp:50:28: error: expected primary-expression before ‘)’ token
+   for (auto object : Object){
+                            ^
+========================================
+Compiling cpp/task-1...
+main.cpp: In member function ‘double Task::get_result()’:
+main.cpp:45:38: error: no matching function for call to ‘Task::cmp()’
+   sort(objs.begin(), objs.end(), cmp());
+                                      ^
+main.cpp:35:7: note: candidate: bool Task::cmp(std::pair<int, double>&, std::pair<int, double>&)
+  bool cmp (pair<int, double>& o1, pair<int, double>& o2){
+       ^
+main.cpp:35:7: note:   candidate expects 2 arguments, 0 provided
+main.cpp:45:39: error: ‘sort’ was not declared in this scope
+   sort(objs.begin(), objs.end(), cmp());
+                                       ^
+main.cpp:50:28: error: expected primary-expression before ‘)’ token
+   for (auto object : Object){
+                            ^
+========================================
+Compiling cpp/task-1...
+main.cpp: In member function ‘double Task::get_result()’:
+main.cpp:45:38: error: no matching function for call to ‘Task::cmp()’
+   sort(objs.begin(), objs.end(), cmp());
+                                      ^
+main.cpp:35:7: note: candidate: bool Task::cmp(std::pair<int, double>&, std::pair<int, double>&)
+  bool cmp (pair<int, double>& o1, pair<int, double>& o2){
+       ^
+main.cpp:35:7: note:   candidate expects 2 arguments, 0 provided
+main.cpp:45:39: error: ‘sort’ was not declared in this scope
+   sort(objs.begin(), objs.end(), cmp());
+                                       ^
+main.cpp:50:28: error: expected primary-expression before ‘)’ token
+   for (auto object : Object){
+                            ^
+========================================
+Compiling cpp/task-1...
+main.cpp: In member function ‘double Task::get_result()’:
+main.cpp:45:38: error: no matching function for call to ‘Task::cmp()’
+   sort(objs.begin(), objs.end(), cmp());
+                                      ^
+main.cpp:35:7: note: candidate: bool Task::cmp(std::pair<int, double>&, std::pair<int, double>&)
+  bool cmp (pair<int, double>& o1, pair<int, double>& o2){
+       ^
+main.cpp:35:7: note:   candidate expects 2 arguments, 0 provided
+main.cpp:45:39: error: ‘sort’ was not declared in this scope
+   sort(objs.begin(), objs.end(), cmp());
+                                       ^
+main.cpp:50:28: error: expected primary-expression before ‘)’ token
+   for (auto object : Object){
+                            ^
+========================================
